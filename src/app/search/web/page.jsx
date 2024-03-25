@@ -1,3 +1,4 @@
+import React, { Suspense } from 'react';
 import WebSearchResult from "@/components/WebSearchResult";
 import Link from "next/link";
 
@@ -28,7 +29,9 @@ export default async function WebSearchPage({ searchParams }) {
   }
   return (
     <div>
-      {results && <WebSearchResult results={data}/>}
+      <Suspense fallback={<div>Loading...</div>}>
+        {results && <WebSearchResult results={data}/>}
+      </Suspense>
     </div>
   );
 }
